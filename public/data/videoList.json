@@ -2,13 +2,11 @@
     "list": [
         {
             "id": 1,
-            "name": "视频1",
-            "url": "https://www.bilibili.com/video/BV1234567890/"
+            "name": "光绪为啥干不过慈禧"
         },
         {
             "id": 2,
-            "name": "视频2",
-            "url": "https://www.bilibili.com/video/BV1234567890/"
+            "name": "秦始皇为何要修建长城"
         }
     ]
 }

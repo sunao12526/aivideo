@@ -1,6 +1,6 @@
 import ffmpeg from 'fluent-ffmpeg';
 import path from 'path';
-import fs from 'fs';
+import * as fs from 'fs';
 
 /**
  * Helper function to get the duration of an audio file using ffprobe.
@@ -21,6 +21,35 @@ const getAudioDuration = (audioPath: string): Promise<number> => {
     });
   });
 };
+
+
+
+export async function parseVideoScript(videoName: string) {
+  const baseDir = process.cwd();
+  const scriptPath = path.join(baseDir, 'public', 'data', 'videos', videoName, 'geminiCreateVideopPompt.txt');
+  const scriptContent = fs.readFileSync(scriptPath, 'utf8');
+
+  const contentMatch = scriptContent.match(/视频脚本旁白内容：\n([\s\S]*?)(?=\n视频图片的中文提示词：|$)/);
+  const imagePromptsMatch = scriptContent.match(/视频图片的中文提示词：\n```json\n([\s\S]*?)\n```/);
+
+  if (contentMatch && contentMatch[1]) {
+    const content = contentMatch[1].trim();
+    const contentPath = path.join(baseDir, 'public', 'data', 'videos', videoName, 'content.txt');
+    fs.writeFileSync(contentPath, content);
+    console.log(`Video content saved to ${contentPath}`);
+  }
+
+  if (imagePromptsMatch && imagePromptsMatch[1]) {
+    const imagePrompts = JSON.parse(imagePromptsMatch[1]);
+    const imagePromptsPath = path.join(baseDir, 'public', 'data', 'videos', videoName, 'imagePrompts.json');
+    fs.writeFileSync(imagePromptsPath, JSON.stringify(imagePrompts, null, 2));
+    console.log(`Image prompts saved to ${imagePromptsPath}`);
+  }
+
+  if (!contentMatch && !imagePromptsMatch) {
+    console.warn('No video content or image prompts found in the script.');
+  }
+}
 
 /**
  * Interface for the result of a video creation operation.

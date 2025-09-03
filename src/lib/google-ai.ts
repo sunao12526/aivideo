@@ -2,7 +2,7 @@ import { GoogleGenAI } from '@google/genai';
 
 // Initialize the Google GenAI client
 const genAI = new GoogleGenAI({
-  apiKey: process.env.GOOGLE_GENAI_API_KEY!,
+  apiKey: process.env.GOOGLE_GENAI_API_KEY,
 });
 
 /**
@@ -14,7 +14,7 @@ const genAI = new GoogleGenAI({
 export async function generateText(prompt: string, systemInstruction?: string): Promise<string> {
   // Prepare the parameters
   const params: any = {
-    model: 'gemini-2.0-flash',
+    model: 'gemini-2.5-flash',
     contents: prompt,
   };
 
