@@ -324,9 +324,9 @@ export default function VideoListPage() {
           <DialogHeader>
             <DialogTitle>查看图片</DialogTitle>
           </DialogHeader>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="flex overflow-x-auto space-x-4 pb-4">  
             {currentImages.map((imageUrl, index) => (
-              <img key={index} src={imageUrl} alt={`Image ${index}`} className="w-full h-auto object-cover rounded-md" />
+              <img key={index} src={imageUrl} alt={`Image ${index}`} className="flex-shrink-0 w-90 h-160 object-cover rounded-md" />
             ))}
           </div>
         </DialogContent>
