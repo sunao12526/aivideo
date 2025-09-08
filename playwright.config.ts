@@ -36,8 +36,9 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'],
-        // storageState: "user-jimeng.json",
-        storageState: "user163.json", },
+        storageState: "user-jimeng.json",
+        // storageState: "user163.json", 
+      },
     },
 
     // {

@@ -3,20 +3,49 @@ import { writeFile } from "node:fs/promises";
 import path from "path";
 import fs from "fs";
 
-const projectName = "赵薇";
-const picPath = "pic";
-const dataDir = path.resolve(__dirname, "../dataResult", projectName);
-const picDir = path.resolve(dataDir, picPath);
-const jsonPath = path.resolve(dataDir, "imagePrompts.json");
-
-// Create the pic directory if it doesn't exist
-if (!fs.existsSync(picDir)) {
-  fs.mkdirSync(picDir, { recursive: true });
+// const videoName = process.env.videoName!;
+const videoName = "光绪为啥干不过慈禧";
+const baseDir = process.cwd();
+const imagesPath = path.join(baseDir, 'public', 'data', 'videos', videoName, 'images');
+if (!fs.existsSync(imagesPath)) {
+  fs.mkdirSync(imagesPath, { recursive: true });
 }
+const jsonPath =path.join(baseDir, 'public', 'data', 'videos', videoName, 'imagePrompts.json');
 
 // Read prompts from JSON file
 const promptsData = fs.readFileSync(jsonPath, "utf8");
-const prompts = JSON.parse(promptsData);
+// const prompts = JSON.parse(promptsData);
+const prompts = [
+  "1个美女打篮球"
+]
+// 辅助函数：下载并保存图片
+async function downloadImage(page: any, prompt: string, testIndex: number, imageIndex: number) {
+  const sanitizedPrompt = prompt.substring(0, 5).replace(/[^a-zA-Z0-9一-龥]/g, "_");
+  const picFileName = `${sanitizedPrompt}-${testIndex + 1}-${imageIndex + 1}.png`;
+  const savePath = path.join(imagesPath, picFileName);
+
+  // 根据 imageIndex 选择不同的图片元素
+  const imageLocator = imageIndex === 0 
+    ? page.locator(".image-card-container-ULcftx").first() 
+    : 
+    // page.locator(`div:nth-child(${(imageIndex + 1)}) > .image-record-item-tp_chb > .context-menu-trigger-DlV5bu > .slot-card-container-T_bc2k > .content-container-BaS4t4 > .image-card-container-ULcftx`).first();
+     page.locator(".image-card-container-ULcftx").nth(imageIndex);
+  await imageLocator.hover();
+  await page.locator(".button-group-gijUWa").first().waitFor({ state: "visible", timeout: 10000 });
+  console.log(`设置下载事件监听... (图片 ${imageIndex + 1})`);
+  const downloadPromise = page.waitForEvent("download", { timeout: 10000 });
+  console.log(`点击下载按钮，等待下载事件... (图片 ${imageIndex + 1})`);
+  await page.locator(".icon-kLbriy > svg").first().click({ timeout: 10000 });
+  console.log(`下载事件已捕获。(图片 ${imageIndex + 1})`);
+  const download = await downloadPromise;
+  await download.saveAs(savePath);
+  console.log(`图片已保存至：${savePath}`);
+  
+  if (imageIndex < 3) { // 重新编辑操作只在前三张图片下载后执行
+    await page.locator("div").filter({ hasText: /^重新编辑$/ }).first().hover();
+    await page.locator(".button-group-gijUWa").first().waitFor({ state: "hidden", timeout: 10000 });
+  }
+}
 
 // Process each prompt sequentially
 test.describe.serial("Image Generation Tests", () => {
@@ -69,7 +98,7 @@ test.describe.serial("Image Generation Tests", () => {
         .nth(2)
         .click({ timeout: 10000 });
 
-      await page.waitForTimeout(5000);
+      await page.waitForTimeout(10000);
       await page
         .getByText("排队中...")
         .waitFor({ state: "hidden", timeout: 50000 });
@@ -77,155 +106,10 @@ test.describe.serial("Image Generation Tests", () => {
         .getByText("%造梦中")
         .waitFor({ state: "hidden", timeout: 50000 });
 
-      let i = 0;
-      await page.locator(".image-card-container-ULcftx").first().hover();
-      await page
-        .locator(".button-group-gijUWa")
-        .first()
-        .waitFor({ state: "visible", timeout: 10000 });
-      console.log(`设置下载事件监听...`);
-      const downloadPromise = page.waitForEvent("download", {
-        timeout: 10000,
-      });
-      console.log(`点击下载按钮，等待下载事件...`);
-      await page
-        .locator(".icon-kLbriy > svg")
-        .first()
-        .click({ timeout: 10000 });
-      console.log(`1111111111`);
-      const download = await downloadPromise;
-      console.log(`下载事件已捕获。`);
-      // 构建唯一的图片保存路径
-      const sanitizedPrompt = prompt
-        .substring(0, 5)
-        .replace(/[^a-zA-Z0-9一-龥]/g, "_");
-      const picFileName = `${sanitizedPrompt}-${index + 1}-${i + 1}.png`;
-      const savePath = path.join(picDir, picFileName);
-      await download.saveAs(savePath);
-      console.log(`图片已保存至：${savePath}`);
-      await page
-        .locator("div")
-        .filter({ hasText: /^重新编辑$/ })
-        .first()
-        .hover();
-      await page
-        .locator(".button-group-gijUWa")
-        .first()
-        .waitFor({ state: "hidden", timeout: 10000 });
-
-      i = 1;
-      await page
-        .locator(
-          "div:nth-child(2) > .image-record-item-tp_chb > .context-menu-trigger-DlV5bu > .slot-card-container-T_bc2k > .content-container-BaS4t4 > .image-card-container-ULcftx"
-        )
-        .first()
-        .hover();
-      await page
-        .locator(".button-group-gijUWa")
-        .first()
-        .waitFor({ state: "visible", timeout: 10000 });
-      console.log(`设置下载事件监听...`);
-      const downloadPromise1 = page.waitForEvent("download", {
-        timeout: 10000,
-      });
-      console.log(`点击下载按钮，等待下载事件...`);
-      await page
-        .locator(".icon-kLbriy > svg")
-        .first()
-        .click({ timeout: 10000 });
-      console.log(`1111111111`);
-      const download1 = await downloadPromise1;
-      console.log(`下载事件已捕获。`);
-      // 构建唯一的图片保存路径
-      const sanitizedPrompt1 = prompt
-        .substring(0, 5)
-        .replace(/[^a-zA-Z0-9一-龥]/g, "_");
-      const picFileName1 = `${sanitizedPrompt}-${index + 1}-${i + 1}.png`;
-      const savePath1 = path.join(picDir, picFileName1);
-      await download1.saveAs(savePath1);
-      console.log(`图片已保存至：${savePath1}`);
-      await page
-        .locator("div")
-        .filter({ hasText: /^重新编辑$/ })
-        .first()
-        .hover();
-      await page
-        .locator(".button-group-gijUWa")
-        .first()
-        .waitFor({ state: "hidden", timeout: 10000 });
-
-      i = 2;
-      await page
-        .locator(
-          "div:nth-child(3) > .image-record-item-tp_chb > .context-menu-trigger-DlV5bu > .slot-card-container-T_bc2k > .content-container-BaS4t4 > .image-card-container-ULcftx"
-        )
-        .first()
-        .hover();
-      await page
-        .locator(".button-group-gijUWa")
-        .first()
-        .waitFor({ state: "visible", timeout: 10000 });
-      console.log(`设置下载事件监听...`);
-      const downloadPromise2 = page.waitForEvent("download", {
-        timeout: 10000,
-      });
-      console.log(`点击下载按钮，等待下载事件...`);
-      await page
-        .locator(".icon-kLbriy > svg")
-        .first()
-        .click({ timeout: 10000 });
-      console.log(`1111111111`);
-      const download2 = await downloadPromise2;
-      console.log(`下载事件已捕获。`);
-      // 构建唯一的图片保存路径
-      const sanitizedPrompt2 = prompt
-        .substring(0, 5)
-        .replace(/[^a-zA-Z0-9一-龥]/g, "_");
-      const picFileName2 = `${sanitizedPrompt}-${index + 1}-${i + 1}.png`;
-      const savePath2 = path.join(picDir, picFileName2);
-      await download2.saveAs(savePath2);
-      console.log(`图片已保存至：${savePath2}`);
-      await page
-        .locator("div")
-        .filter({ hasText: /^重新编辑$/ })
-        .first()
-        .hover();
-      await page
-        .locator(".button-group-gijUWa")
-        .first()
-        .waitFor({ state: "hidden", timeout: 10000 });
-
-      i = 3;
-      await page
-        .locator(
-          "div:nth-child(4) > .image-record-item-tp_chb > .context-menu-trigger-DlV5bu > .slot-card-container-T_bc2k > .content-container-BaS4t4 > .image-card-container-ULcftx"
-        )
-        .first()
-        .hover();
-      await page
-        .locator(".button-group-gijUWa")
-        .first()
-        .waitFor({ state: "visible", timeout: 10000 });
-      console.log(`设置下载事件监听...`);
-      const downloadPromise3 = page.waitForEvent("download", {
-        timeout: 10000,
-      });
-      console.log(`点击下载按钮，等待下载事件...`);
-      await page
-        .locator(".icon-kLbriy > svg")
-        .first()
-        .click({ timeout: 10000 });
-      console.log(`1111111111`);
-      const download3 = await downloadPromise3;
-      console.log(`下载事件已捕获。`);
-      // 构建唯一的图片保存路径
-      const sanitizedPrompt3 = prompt
-        .substring(0, 5)
-        .replace(/[^a-zA-Z0-9一-龥]/g, "_");
-      const picFileName3 = `${sanitizedPrompt}-${index + 1}-${i + 1}.png`;
-      const savePath3 = path.join(picDir, picFileName3);
-      await download3.saveAs(savePath3);
-      console.log(`图片已保存至：${savePath3}`);
+      // 下载四张图片
+      for (let i = 0; i < 4; i++) {
+        await downloadImage(page, prompt, index, i);
+      }
     });
   }
 });
