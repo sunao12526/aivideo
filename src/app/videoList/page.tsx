@@ -9,7 +9,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { Video } from '@/lib/videoUtils';
-
+import { toast } from 'sonner';
+import { Textarea } from '@/components/ui/textarea';
 
 
 async function getVideoList(): Promise<Video[]> {
@@ -33,6 +34,16 @@ export default function VideoListPage() {
   const [editVideoDescription, setEditVideoDescription] = useState('');
   const [editVideoImagePath, setEditVideoImagePath] = useState('');
   const [editVideoAudioPath, setEditVideoAudioPath] = useState('');
+  const [showImageDialog, setShowImageDialog] = useState(false);
+  const [currentImages, setCurrentImages] = useState<string[]>([]);
+  const [showAddVideoDialog, setShowAddVideoDialog] = useState(false);
+  const [showContentDialog, setShowContentDialog] = useState(false);
+  const [currentContent, setCurrentContent] = useState('');
+  const [currentVideoName, setCurrentVideoName] = useState('');
+  const [showImagePromptDialog, setShowImagePromptDialog] = useState(false);
+  const [currentImagePrompts, setCurrentImagePrompts] = useState<string[]>([]);
+  const [currentVideoNameForPrompts, setCurrentVideoNameForPrompts] = useState('');
+
 
   const fetchVideoData = async () => {
     const data = await getVideoList();
@@ -40,7 +51,10 @@ export default function VideoListPage() {
   };
 
   const handleSaveEdit = async () => {
-    if (!editingVideo) return;
+    if (!editingVideo) {
+      toast.error('请先选择要编辑的视频');
+      return;
+    };
 
     try {
       const response = await fetch(`/api/videoList/${editingVideo.id}`, {
@@ -57,13 +71,13 @@ export default function VideoListPage() {
       });
 
       if (response.ok) {
-        console.log('视频修改成功');
+        toast.success('视频修改成功');
         await fetchVideoData();
-        setEditingVideo(null); // Close the dialog
+        setEditingVideo(null);  
       } else {
         console.error('视频修改失败');
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('修改视频时发生错误:', error);
     }
   };
@@ -87,7 +101,6 @@ export default function VideoListPage() {
       });
 
       if (response.ok) {
-        console.log('视频添加成功');
         // 刷新视频列表
         await fetchVideoData();
         // 清空表单
@@ -95,10 +108,12 @@ export default function VideoListPage() {
         setNewVideoDescription('');
         setNewVideoImagePath('');
         setNewVideoAudioPath('');
+        setShowAddVideoDialog(false);
+        toast.success('视频添加成功');
       } else {
         console.error('视频添加失败');
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('添加视频时发生错误:', error);
     }
 
@@ -124,7 +139,7 @@ export default function VideoListPage() {
       } else {
         alert(`Error: ${data.error}`);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to generate video:', error);
       alert('Failed to generate video.');
     }
@@ -137,15 +152,17 @@ export default function VideoListPage() {
       });
 
       if (response.ok) {
-        console.log('视频删除成功');
+        toast.success('视频删除成功');
         fetchVideoData(); // Refresh the video list
       } else {
         console.error('视频删除失败');
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('删除视频时发生错误:', error);
     }
   };
+
+
 
   const handleAIParse = async (videoName: string) => {
     try {
@@ -162,22 +179,165 @@ export default function VideoListPage() {
       } else {
         alert(`Error: ${data.error}`);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to generate video:', error);
       alert('Failed to generate video.');
     }
   };
 
+  const handleViewContent = async (videoName: string) => {
+    try {
+      const response = await fetch(`/data/videos/${videoName}/content.txt`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch content for ${videoName}`);
+      }
+      const content = await response.text();
+      setCurrentContent(content);
+      setCurrentVideoName(videoName);
+      setShowContentDialog(true);
+    } catch (error: any) {
+      console.error("Error viewing content:", error);
+      alert(`查看内容失败: ${error.message}`);
+    }
+  };
+
+  const handleViewImagePrompt = async (videoName: string) => {
+    try {
+      const response = await fetch(`/data/videos/${videoName}/imagePrompts.json`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch image prompts for ${videoName}`);
+      }
+      const imagePrompts = await response.json();
+      setCurrentImagePrompts(imagePrompts);
+      setCurrentVideoNameForPrompts(videoName);
+      setShowImagePromptDialog(true);
+    } catch (error: any) {
+      console.error("Error viewing image prompts:", error);
+      alert(`查看图片提示词失败: ${error.message}`);
+    }
+  };
+
+  const handleGenerateImage = async (videoName: string) => {
+    toast.loading('正在生成图片...');
+    try {
+      const response = await fetch('/api/generateImage', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ videoName }),
+      });
+      if (!response.ok) {
+        throw new Error(`Failed to generate images for ${videoName}`);
+      }
+      toast.success(`所有图片已生成并保存到 ${videoName}/images/ 目录下`);    
+    } catch (error: any) {
+      console.error("Error generating images:", error);
+      toast.error(`生成图片失败: ${error.message}`)
+    } finally {
+      toast.dismiss();
+    }
+  };
+
+  const handleViewImage = async (videoName: string) => {
+    try {
+      const response = await fetch(`/api/getImages/${videoName}`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch images for ${videoName}`);
+      }
+      const { images } = await response.json();
+      if (images.length > 0) {
+        // 在这里显示图片，例如使用一个弹窗或新的页面
+        setCurrentImages(images);
+        setShowImageDialog(true);
+      } else {
+        alert(`没有找到 ${videoName} 的图片。`);
+      }
+    } catch (error: any) {
+      console.error("Error viewing images:", error);
+      alert(`查看图片失败: ${error.message}`);
+    }
+  };
+
+  const handleSaveContent = async () => {
+    try {
+      const response = await fetch(`/api/saveContent`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ videoName: currentVideoName, content: currentContent }),
+      });
+
+      if (response.ok) {
+        toast.success('内容保存成功');
+        setShowContentDialog(false);
+      } else {
+        toast.error('内容保存失败');
+      }
+    } catch (error) {
+      console.error('保存内容时发生错误:', error);
+      toast.error('保存内容时发生错误');
+    }
+  };
+
+  const handleSavePrompts = async () => {
+    try {
+      const response = await fetch(`/api/saveImagePrompts`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ videoName: currentVideoNameForPrompts, prompts: currentImagePrompts }),
+      });
+
+      if (response.ok) {
+        toast.success('提示词保存成功');
+        setShowImagePromptDialog(false);
+      } else {
+        toast.error('提示词保存失败');
+      }
+    } catch (error) {
+      console.error('保存提示词时发生错误:', error);
+      toast.error('保存提示词时发生错误');
+    }
+  };
+
+  const handlePromptChange = (index: number, newPrompt: string) => {
+    const updatedPrompts = [...currentImagePrompts];
+    updatedPrompts[index] = newPrompt;
+    setCurrentImagePrompts(updatedPrompts);
+  };
+
+  const handleDeletePrompt = (index: number) => {
+    const updatedPrompts = [...currentImagePrompts];
+    updatedPrompts.splice(index, 1);
+    setCurrentImagePrompts(updatedPrompts);
+  };
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">视频列表</h1>
-      <Dialog>
+
+      <Dialog open={showImageDialog} onOpenChange={setShowImageDialog}>
+        <DialogContent className="sm:max-w-[800px]">
+          <DialogHeader>
+            <DialogTitle>查看图片</DialogTitle>
+          </DialogHeader>
+          <div className="grid grid-cols-2 gap-4">
+            {currentImages.map((imageUrl, index) => (
+              <img key={index} src={imageUrl} alt={`Image ${index}`} className="w-full h-auto object-cover rounded-md" />
+            ))}
+          </div>
+        </DialogContent>
+      </Dialog>
+      <Dialog open={showAddVideoDialog} onOpenChange={setShowAddVideoDialog}>
         <DialogTrigger asChild>
-          <Button className="mb-4">添加视频</Button>
+          <Button  className="mb-4" variant="outline" onClick={() => setShowAddVideoDialog(true)}>新增视频</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>添加视频</DialogTitle>
+            <DialogTitle>新增视频</DialogTitle>
             <DialogDescription>
               在这里添加新视频的信息。
             </DialogDescription>
@@ -213,15 +373,84 @@ export default function VideoListPage() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+      <Dialog open={showContentDialog} onOpenChange={setShowContentDialog}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>查看/编辑内容</DialogTitle>
+          </DialogHeader>
+          <Textarea
+            value={currentContent}
+            onChange={(e) => setCurrentContent(e.target.value)}
+            className="min-h-[300px]"
+          />
+          <DialogFooter>
+            <Button onClick={handleSaveContent}>保存</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+      <Dialog open={showImagePromptDialog} onOpenChange={setShowImagePromptDialog}>
+        <DialogContent className="sm:max-w-[800px]">
+          <DialogHeader>
+            <DialogTitle>查看/编辑图片提示词</DialogTitle>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <table className="w-full">
+              <thead>
+                <tr>
+                  <th className="text-left">提示词</th>
+                  <th className="text-right">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                {currentImagePrompts.map((prompt, index) => (
+                  <tr key={index}>
+                    <td>
+                      <Input
+                        value={prompt}
+                        onChange={(e) => handlePromptChange(index, e.target.value)}
+                      />
+                    </td>
+                    <td className="text-right">
+                      <Button
+                        variant="destructive"
+                        size="sm"
+                        onClick={() => handleDeletePrompt(index)}
+                      >
+                        删除
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <DialogFooter>
+            <Button onClick={handleSavePrompts}>保存</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
       <ul className="space-y-2">
         {videoList.map((video) => (
           <li key={video.id} className="bg-gray-100 p-3 rounded-md shadow-sm">
             <Link href={video.name} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
               {video.name}
             </Link>
+            <p className="text-sm text-gray-500">创建时间: {video.createdAt}</p>
             <div className="mt-2 space-x-2">
               <button className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600" onClick={() => handleAIParse(video.name)}>
                 AI解析
+              </button>
+              <button className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600" onClick={() => handleViewContent(video.name)}>
+                查看内容
+              </button>
+              <button className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600" onClick={() => handleViewImagePrompt(video.name)}>
+                查看图片提示词
+              </button>
+              <button className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600" onClick={() => handleGenerateImage(video.name)}>
+                生成图片
+              </button>
+              <button className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600" onClick={() => handleViewImage(video.name)}>
+                查看图片
               </button>
               <button
                 className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
@@ -229,17 +458,19 @@ export default function VideoListPage() {
               >
                 生成视频
               </button>
-              <Dialog onOpenChange={(open) => {
+              <Dialog 
+              onOpenChange={(open) => {
                 if (open) {
                   setEditingVideo(video);
                   setEditVideoName(video.name);
                   setEditVideoDescription(video.description);
                   setEditVideoImagePath(video.imagePath);
                   setEditVideoAudioPath(video.audioPath);
-                }
-              }}>
+                } 
+              }}
+              >
                 <DialogTrigger asChild>
-                  <Button variant="outline" size="sm">修改</Button>
+                  <Button variant="outline" size="sm" >修改</Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                   <DialogHeader>

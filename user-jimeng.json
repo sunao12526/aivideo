@@ -1,0 +1,696 @@
+{
+  "cookies": [
+    {
+      "name": "faceu-commerce-user-info",
+      "value": "EfCJHtPD48B-YoTSmtPZa-Vq35AS9U9I_KUG5Xj82ZczlM9FO_pyOVFWfp0qjm1SjqtmMLtm5qfqYhDiR9BO87TtApFVHruyIMpwJcPZhXjR3beQ-6mfUtNX7Aen4Mnm40ac-1N2iw5Rpd2NeNeP0giR2MMAaz2VttsaWmRUrc7wuCEkFHUaUOxFp1WQe0xlCN8nLiYQZ6WlvabUTBPwQU0shHMnyu_-oq-J5r6EBw9ZxbRodm_aaM5ACiJqdSeGotwf9U7qJy3ikV7VKGc6ceGwC44gRS-x2ZtDYx6cKqxj60mGxpb1jBTuCzauejRo8cs5V3Bm1-4JqGPNXjNLcdQ4gEK_w4BD7Lvw8AJsD1avVxbpknVKD-rUvUI7f_uFu4J6bo7LZHfBSgfur-1N5fJRsJL9jFnIocnplPKkWfg3gxRWcftdoP7mGrN1oqCw8rfIh-4SsoIe0hzXxKxQaI271YsaHbO7PflQ8LQnSAiG-wDkporCGCAY5nIWEHSSFTgjxW6lp1YmBSJqc28yVaDdC_CkrWEm3SpupdEf1L0qXcUwF1imNbzCTC9BcHNgxdELbxSDnCxgIu9eFiA-GlrEkxG01ZLblyowiMOFPXX8tks8YdfUTT8IR2S4ReQ",
+      "domain": ".jianying.com",
+      "path": "/commerce/v1/subscription/user_info",
+      "expires": 1790683252.311277,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "gd_random",
+      "value": "eyJtYXRjaCI6dHJ1ZSwicGVyY2VudCI6MC41NDY3MDU0Mzc3MjcwNjIxfQ==.PbVQq9GlsOHTlBm1MixdB4FFWu8h0gevCgvLXMzeujg=",
+      "domain": "open.douyin.com",
+      "path": "/platform/oauth/connect",
+      "expires": 1756728047.02531,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_GRECAPTCHA",
+      "value": "09ANMylNAqKZx_biYrccWCA7QhlWbFJOVraAgRrvtkUEQkKSY_khkkwO9LP4DoXNE38EZ4YJV17B_FjYsoDLofIOM",
+      "domain": "www.recaptcha.net",
+      "path": "/recaptcha",
+      "expires": 1771590776.502504,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "NEXT_LOCALE",
+      "value": "en",
+      "domain": "fish.audio",
+      "path": "/",
+      "expires": 1787574757.068783,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga",
+      "value": "GA1.1.1061094375.1756038758",
+      "domain": ".fish.audio",
+      "path": "/",
+      "expires": 1790598758.057276,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "m",
+      "value": "d971d267-3ba0-4ffc-8fd1-057bafb1ad80cf4b3d",
+      "domain": "m.stripe.com",
+      "path": "/",
+      "expires": 1790598784.166324,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "__stripe_mid",
+      "value": "4ccb1af6-b05c-4fd1-809f-a64267f87f4f499aae",
+      "domain": ".fish.audio",
+      "path": "/",
+      "expires": 1787574784,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "token",
+      "value": "6c042a9f-bb31-40a6-ba54-363edfd50d0e",
+      "domain": "fish.audio",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ph_phc_eRWrqtSo2ME6572rpKWQ5USQtkxlR4ptTECaXuhmYI_posthog",
+      "value": "%7B%22distinct_id%22%3A%22ee23503f8a7b4f088ba18784ea8b0dd4%22%2C%22%24sesid%22%3A%5B1756038780761%2C%220198dc10-fe46-7786-adfa-ed1eb48f442c%22%2C1756038757958%5D%2C%22%24epp%22%3Atrue%7D",
+      "domain": ".fish.audio",
+      "path": "/",
+      "expires": 1787574780,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_1ZFD8B2ZVP",
+      "value": "GS2.1.s1756038758$o1$g1$t1756038781$j37$l0$h1393274223",
+      "domain": ".fish.audio",
+      "path": "/",
+      "expires": 1790598781.733245,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_tea_web_id",
+      "value": "7542491837756851753",
+      "domain": "jimeng.jianying.com",
+      "path": "/",
+      "expires": 1756209651.094804,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "x-web-secsdk-uid",
+      "value": "bd0f91e9-a2be-453c-b08f-ce6dac28ed07",
+      "domain": "jimeng.jianying.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_agenticGeneratorExperimentGroupIndex",
+      "value": "0",
+      "domain": "jimeng.jianying.com",
+      "path": "/",
+      "expires": 1756728051,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "s_v_web_id",
+      "value": "verify_mer2fqwu_XK7xCPtV_InSR_4u1e_Buaa_oiE6aCV6Set4",
+      "domain": "jimeng.jianying.com",
+      "path": "/",
+      "expires": 1761307243,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "fpk1",
+      "value": "85d6e76bbeefd86cc985877a880cd75acad4ca3ff9147f85fce61f3d7547fd7d742e22f84c1d8befae2ac60ca383e8d3",
+      "domain": "jimeng.jianying.com",
+      "path": "/",
+      "expires": 1787659244.526461,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "passport_csrf_token",
+      "value": "a075777aeaaf69c51bd9b66e5d1cad02",
+      "domain": ".jianying.com",
+      "path": "/",
+      "expires": 1761307246.759513,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "passport_csrf_token_default",
+      "value": "a075777aeaaf69c51bd9b66e5d1cad02",
+      "domain": ".jianying.com",
+      "path": "/",
+      "expires": 1761307246.759575,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "passport_csrf_token_wap_state",
+      "value": "f3feedfd3gAToVCgoVPZIDJhNjdhZjcxNWJmNTg0NzE0M2ZhNmM1ZTcyNjA1OGJmoU7ZOGh0dHBzOi8vamltZW5nLmppYW55aW5nLmNvbS9haS10b29sL3RoaXJkLXBhcnR5LWNhbGxiYWNroVYBoUkAoUQAoUHSAAfWn6FNAKFIs2ppbWVuZy5qaWFueWluZy5jb22hUgKiUEzROl6mQUNUSU9OoKFM2ShodHRwczovL2ppbWVuZy5qaWFueWluZy5jb20vYWktdG9vbC9ob21loVTZIDA5ZDE1YzQ2YTVjOGIxMjE4MDdjYzcyNDFlZWY1M2IwoVcAoUYAolNBAKFVwqJNTMI%253D",
+      "domain": ".jianying.com",
+      "path": "/",
+      "expires": 1756126846.759595,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "gfkadpd",
+      "value": "1128,28837",
+      "domain": "open.douyin.com",
+      "path": "/",
+      "expires": 1756382447,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "__tea_cache_tokens_1243",
+      "value": "{%22web_id%22:%227542491853761824299%22%2C%22user_unique_id%22:%227542491853761824299%22%2C%22timestamp%22:1756123247988%2C%22_type_%22:%22default%22}",
+      "domain": ".open.douyin.com",
+      "path": "/",
+      "expires": 1756728047,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ttwid",
+      "value": "1%7CqLtLHkoyi2DUEYP_qejBAQxcV4232Ap22vsshkDd6oo%7C1756123248%7C50fad0eb9b5f65d223eee38046ee44db4b900e81a15fd7bb1c51e85166f236a4",
+      "domain": ".bytedance.com",
+      "path": "/",
+      "expires": 1787659248.293393,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "csrf_session_id",
+      "value": "bb3bc16c5d73d0f01d492a220e35e9a4",
+      "domain": "open.douyin.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "ttwid",
+      "value": "1%7CqLtLHkoyi2DUEYP_qejBAQxcV4232Ap22vsshkDd6oo%7C1756123248%7C50fad0eb9b5f65d223eee38046ee44db4b900e81a15fd7bb1c51e85166f236a4",
+      "domain": ".douyin.com",
+      "path": "/",
+      "expires": 1787659248.429497,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "passport_csrf_token",
+      "value": "2599bbe9418ca0276686eb2cf2669559",
+      "domain": ".douyin.com",
+      "path": "/",
+      "expires": 1761307248.589107,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "passport_csrf_token_default",
+      "value": "2599bbe9418ca0276686eb2cf2669559",
+      "domain": ".douyin.com",
+      "path": "/",
+      "expires": 1761307248.589156,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "bd_ticket_guard_client_data",
+      "value": "eyJiZC10aWNrZXQtZ3VhcmQtdmVyc2lvbiI6MiwiYmQtdGlja2V0LWd1YXJkLWl0ZXJhdGlvbi12ZXJzaW9uIjoxLCJiZC10aWNrZXQtZ3VhcmQtcmVlLXB1YmxpYy1rZXkiOiJCRktjVTFvbCs2YUZhWjhIWE83NTRZcDU2aGV0dTI3bmErQkZjVWd3WmJyYlV5eE5od2dEN0JoNzBkREpxK1IxYmlVZzlJVU5ObmpheDlHRVhlR1FlcDA9IiwiYmQtdGlja2V0LWd1YXJkLXdlYi12ZXJzaW9uIjoxfQ%3D%3D",
+      "domain": ".douyin.com",
+      "path": "/",
+      "expires": 1761307248.786725,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "bd_ticket_guard_client_web_domain",
+      "value": "2",
+      "domain": ".douyin.com",
+      "path": "/",
+      "expires": 1761307248.786813,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "passport_mfa_token",
+      "value": "CjXrn%2FXrFnxqTpbjUj%2BekIXOw%2Ft6U3%2FcwMXl3xyV7TSx43Cq0bNwz37nzxx0G5PJPiDKk5pCchpKCjwAAAAAAAAAAAAAT2XWaRvZOmppNuqj259NioGEF%2BLQKlHVf6UKVaXls4%2Bb1kt5fAMK1JJ14lUwJ5giZ7QQ07T6DRj2sdFsIAIiAQO07Sol",
+      "domain": ".douyin.com",
+      "path": "/",
+      "expires": 1761307250.044033,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "d_ticket_dy_open",
+      "value": "b3af8401a71ca5dbd909c2d8f22943962f069",
+      "domain": ".open.douyin.com",
+      "path": "/",
+      "expires": 1787659250.044084,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "n_mh",
+      "value": "LZgUlm5FkJkbKFYBgAYORDOPXlr4nSNovwbURSTq-y8",
+      "domain": ".jianying.com",
+      "path": "/",
+      "expires": 1766491250.818905,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "passport_mfa_token",
+      "value": "CjFbgRfye5C%2FPN0K%2BVc5rMHJMNzMoQfK8mtaVr0ggNxJFOzBa%2FvxIKWrnqkOZio1Jhy5GkoKPAAAAAAAAAAAAABPZdZpG9k6amk26qPbn02KgYQX4tAqUdV%2FpQpVpeWzj5vWS3l8AwrUknXiVTAnmCJntBDys%2FoNGPax0WwgAiIBAwdrzkM%3D",
+      "domain": ".jianying.com",
+      "path": "/",
+      "expires": 1761307250.818922,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "d_ticket",
+      "value": "357d27a241e6cae068604afeeebbeb376b0ac",
+      "domain": ".jianying.com",
+      "path": "/",
+      "expires": 1787659250.818936,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "sid_guard",
+      "value": "c37914f92937cace42b075a1ef56997a%7C1756123250%7C5184000%7CFri%2C+24-Oct-2025+12%3A00%3A50+GMT",
+      "domain": ".jianying.com",
+      "path": "/",
+      "expires": 1787227250.818949,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "uid_tt",
+      "value": "86abb5be39dfcf59d0d86069df679fa7",
+      "domain": ".jianying.com",
+      "path": "/",
+      "expires": 1761307250.818962,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "uid_tt_ss",
+      "value": "86abb5be39dfcf59d0d86069df679fa7",
+      "domain": ".jianying.com",
+      "path": "/",
+      "expires": 1761307250.818974,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "sid_tt",
+      "value": "c37914f92937cace42b075a1ef56997a",
+      "domain": ".jianying.com",
+      "path": "/",
+      "expires": 1761307250.818987,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "sessionid",
+      "value": "c37914f92937cace42b075a1ef56997a",
+      "domain": ".jianying.com",
+      "path": "/",
+      "expires": 1761307250.818999,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "sessionid_ss",
+      "value": "c37914f92937cace42b075a1ef56997a",
+      "domain": ".jianying.com",
+      "path": "/",
+      "expires": 1761307250.819014,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "session_tlb_tag",
+      "value": "sttt%7C17%7Cw3kU-Sk3ys5CsHWh71aZev________-oTxg4W0YmDp8CViiA7GsQwYRoz0ZXWZ450HhDmnaHiTA%3D",
+      "domain": ".jianying.com",
+      "path": "/",
+      "expires": 1761307250.819027,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "is_staff_user",
+      "value": "false",
+      "domain": ".jianying.com",
+      "path": "/",
+      "expires": 1761307250.819039,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "sid_ucp_v1",
+      "value": "1.0.0-KGZmYmYzZGE5YjMzODJhNWUwMDkyMjRlMzU4ZThmMjNkYjQxODRmMDgKHwi3iODXqczMAhDyoLHFBhifrR8gDDCU4KahBjgIQCYaAmxxIiBjMzc5MTRmOTI5MzdjYWNlNDJiMDc1YTFlZjU2OTk3YQ",
+      "domain": ".jianying.com",
+      "path": "/",
+      "expires": 1761307250.819054,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ssid_ucp_v1",
+      "value": "1.0.0-KGZmYmYzZGE5YjMzODJhNWUwMDkyMjRlMzU4ZThmMjNkYjQxODRmMDgKHwi3iODXqczMAhDyoLHFBhifrR8gDDCU4KahBjgIQCYaAmxxIiBjMzc5MTRmOTI5MzdjYWNlNDJiMDc1YTFlZjU2OTk3YQ",
+      "domain": ".jianying.com",
+      "path": "/",
+      "expires": 1761307250.819069,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "ttwid",
+      "value": "1|hSSX1DMxsBHauzjT_8VMLSiBaLGGJrxwmpjJSXbxBtc|1756123250|6977d3303886a392450c6df1e8a52e51ac764f3cbb00ba57c4a79990e476d2f0",
+      "domain": ".jianying.com",
+      "path": "/",
+      "expires": 1787659251.094729,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "user_spaces_idc",
+      "value": "{\"7217493642733158659\":\"hl\"}",
+      "domain": "jimeng.jianying.com",
+      "path": "/",
+      "expires": 1787659251.341378,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_uetsid",
+      "value": "207c862081ab11f08fe69d26c0636d1d",
+      "domain": ".jianying.com",
+      "path": "/",
+      "expires": 1756209651,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_uetvid",
+      "value": "207c96f081ab11f0b0ef0bd6115c2ce3",
+      "domain": ".jianying.com",
+      "path": "/",
+      "expires": 1789819251,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "dm_auid",
+      "value": "EBKMXCg+CnXidDpHpkcJgGBtLznPt9rdqIPPArMFBrk=",
+      "domain": "jimeng.jianying.com",
+      "path": "/",
+      "expires": 1790683251.809301,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "uifid_temp",
+      "value": "a1df95966d35897b72e31f2f7dec7342544aacff0e20c7b795933ec2c7364e5d5a47048d1fe961d50be0628a170b9e3b10f934d3619d684056d3ce640e9e0055fcd17486279dc0c5cc46050b1ad6c2d7ba7b35860c92b0f70120111def26a655b473d367c4f906aa315746d7d30582eb",
+      "domain": "jimeng.jianying.com",
+      "path": "/",
+      "expires": 1790683251.809357,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "uifid",
+      "value": "a1df95966d35897b72e31f2f7dec7342544aacff0e20c7b795933ec2c7364e5d4085edeed435843179a54f74473a097bfbc5abd73da4010aa300e59b1d308ed55335095dad8aab5cef3af27218719ba43b220bdf398845d6cf5e580bcd468d3dcee59aff6e3a31017c24ca549b22e82ea858f33ad953cf09482a571c73a46c9d0cea72c1bd77d753873b6fd6081cfbf665f53bce5333b399d67ea467d601c9770e02f855eecdd1282cba78b5250ca07223bf18aec44a8eac66bb43b802ddcbc4",
+      "domain": "jimeng.jianying.com",
+      "path": "/",
+      "expires": 1790683251.899098,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "odin_tt",
+      "value": "a92b281c507ac1dd0915273cf5a7ff15232936dd52d9a4537346ffbfa120bc00edef93382ba96b5f74993b1edfdefa66226530011a86e9fc8a3cb26c3692c6ea",
+      "domain": ".jianying.com",
+      "path": "/",
+      "expires": 1787659252.444971,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://jimeng.jianying.com",
+      "localStorage": [
+        {
+          "name": "__tea_cache_first_2018",
+          "value": "1"
+        },
+        {
+          "name": "_uetvid_exp",
+          "value": "Sat, 19 Sep 2026 12:00:51 GMT"
+        },
+        {
+          "name": "beta-test-injected-cache",
+          "value": "{\"config_list\":[{\"feature_key\":\"dreamina_video_generate\",\"status\":3,\"is_white\":false,\"is_invite\":false,\"questionnaire_url\":\"\",\"survey_id\":\"\"},{\"feature_key\":\"dreamina_canvas_preview\",\"status\":3,\"is_white\":false,\"is_invite\":false,\"questionnaire_url\":\"\",\"survey_id\":\"\"},{\"feature_key\":\"dreamina_image_generate\",\"status\":3,\"is_white\":false,\"is_invite\":false,\"questionnaire_url\":\"\",\"survey_id\":\"\"},{\"feature_key\":\"human_face_enable\",\"status\":3,\"is_white\":false,\"is_invite\":false,\"questionnaire_url\":\"\",\"survey_id\":\"\"},{\"feature_key\":\"dreamina_workflow_mode\",\"status\":2,\"is_white\":false,\"is_invite\":false,\"questionnaire_url\":\"\",\"survey_id\":\"\"},{\"feature_key\":\"dreamina_story_agent\",\"status\":1,\"is_white\":false,\"is_invite\":false,\"questionnaire_url\":\"\",\"survey_id\":\"\"},{\"feature_key\":\"dreamina_story_mode\",\"status\":3,\"is_white\":false,\"is_invite\":false,\"questionnaire_url\":\"\",\"survey_id\":\"\"},{\"feature_key\":\"canvas_fusion_enable\",\"status\":3,\"is_white\":false,\"is_invite\":false,\"questionnaire_url\":\"\",\"survey_id\":\"\"},{\"feature_key\":\"bg_paint_enable\",\"status\":3,\"is_white\":false,\"is_invite\":false,\"questionnaire_url\":\"\",\"survey_id\":\"\"},{\"feature_key\":\"dreamina_audio_generate\",\"status\":3,\"is_white\":false,\"is_invite\":false,\"questionnaire_url\":\"https://survey.feelgood.cn/s/?taskID=7414053475895476275\",\"survey_id\":\"7414053475895476275\"},{\"feature_key\":\"dreamina_smart_reference\",\"status\":3,\"is_white\":false,\"is_invite\":false,\"questionnaire_url\":\"\",\"survey_id\":\"\"},{\"feature_key\":\"dreamina_lip_sync\",\"status\":3,\"is_white\":false,\"is_invite\":false,\"questionnaire_url\":\"\",\"survey_id\":\"\"},{\"feature_key\":\"mweb_publish_image\",\"status\":3,\"is_white\":false,\"is_invite\":false,\"questionnaire_url\":\"\",\"survey_id\":\"\"},{\"feature_key\":\"mweb_publish_video\",\"status\":3,\"is_white\":false,\"is_invite\":false,\"questionnaire_url\":\"\",\"survey_id\":\"\"},{\"feature_key\":\"mweb_publish_canvas\",\"status\":1,\"is_white\":false,\"is_invite\":false,\"questionnaire_url\":\"\",\"survey_id\":\"\"},{\"feature_key\":\"mweb_publish_canvas_draft\",\"status\":1,\"is_white\":false,\"is_invite\":false,\"questionnaire_url\":\"\",\"survey_id\":\"\"},{\"feature_key\":\"mweb_publish_story\",\"status\":1,\"is_white\":false,\"is_invite\":false,\"questionnaire_url\":\"\",\"survey_id\":\"\"},{\"feature_key\":\"mweb_publish_short_video\",\"status\":3,\"is_white\":false,\"is_invite\":false,\"questionnaire_url\":\"\",\"survey_id\":\"\"}]}"
+        },
+        {
+          "name": "__tea_cache_tokens_2018",
+          "value": "{\"web_id\":\"7542491843650471478\",\"user_unique_id\":\"verify_mer2fqwu_XK7xCPtV_InSR_4u1e_Buaa_oiE6aCV6Set4\",\"timestamp\":1756123244791,\"_type_\":\"default\"}"
+        },
+        {
+          "name": "xmst",
+          "value": "jUrsdHn7skhS7gPcyEB_US1VIs0YNAipurZdFac1Beq9FuWRzr8sOW8ppB51mztn3u3-WjBEsIZ1VIQc1sTZbP0Q4YMKN--qgnvQFkr8PhckmAENfMQobRRkaXk_AqWlab8qZg=="
+        },
+        {
+          "name": "dreamina__generator_video_modelKey",
+          "value": "\"dreamina_ic_generate_video_model_vgfm_3.0\""
+        },
+        {
+          "name": "dreamina__generator_image__selectedImageModel",
+          "value": "{\"feats\":[\"new_model\",\"default_scene\",\"etta\",\"t2i\",\"character\",\"face_swap\",\"bg_paint\"],\"fps\":0,\"extra\":{\"modelSource\":\"by Seedream 3.0\",\"rawModelSource\":\"Seedream 3.0\"},\"iconUrl\":\"https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/model_image_v8_3_1.jpg~tplv-tb4s082cfz-resize:300:300.webp?lk3s=8e790bc3&x-expires=1787659242&x-signature=JOS2OZlj%2FBU6EV7bjLX8ODUEdec%3D\",\"modelNameStarlingKey\":\"dre_t2i_model_3_1\",\"modelTipStarlingKey\":\"dre_t2i_model_3_1_desc\",\"modelReqKey\":\"high_aes_general_v30l_art_fangzhou:general_v3.0_18b\",\"isNewModel\":true,\"sampleSteps\":{\"steps\":16,\"minSteps\":10,\"maxSteps\":41},\"blendEnable\":{\"canny\":false,\"depth\":false,\"pose\":false,\"faceSwap\":true,\"bgPaint\":true},\"modelName\":\"图片 3.1\",\"modelTip\":\"丰富的美学多样性，画面更鲜明生动\",\"featureKey\":\"\",\"generationCategoryNameStarlingKey\":\"dreamina_app_modalswitch_image_3_1\",\"generationCategoryName\":\"图片・3.1 \",\"durationOption\":null,\"lensMotionTypeOption\":null,\"motionSpeedOption\":null,\"cameraStrengthOption\":null,\"videoAspectRatioOption\":null,\"commercialConfig\":{\"commerceInfoMap\":null,\"imageModelCommerceConfig\":{\"base\":{\"default\":{\"amount\":1,\"resourceSubType\":\"aigc\",\"resourceIdType\":\"str\",\"resourceId\":\"generate_img\",\"benefitType\":\"image_basic_generate_plus\"},\"rules\":[{\"resolution\":[\"2k\"],\"benefitKey\":{\"amount\":1,\"resourceSubType\":\"aigc\",\"resourceIdType\":\"str\",\"resourceId\":\"generate_img\",\"benefitType\":\"image_uhd\"}}]},\"blend\":{\"default\":{\"amount\":1,\"resourceSubType\":\"aigc\",\"resourceIdType\":\"str\",\"resourceId\":\"generate_img\",\"benefitType\":\"image_blend_plus\"},\"rules\":[]}}},\"featConfig\":{\"canny\":{\"strength\":0.6},\"depth\":{\"strength\":0.6},\"pose\":{\"strength\":0.6},\"styleReference\":{\"strength\":0.8}},\"featsCantCombine\":[],\"modelBgPromptStarlingKey\":\"\",\"resolutionMap\":{\"1k\":{\"imageRatioSizes\":[{\"width\":1328,\"height\":1328,\"ratioType\":1},{\"width\":1104,\"height\":1472,\"ratioType\":2},{\"width\":1664,\"height\":936,\"ratioType\":3},{\"width\":1472,\"height\":1104,\"ratioType\":4},{\"width\":936,\"height\":1664,\"ratioType\":5},{\"width\":1056,\"height\":1584,\"ratioType\":6},{\"width\":1584,\"height\":1056,\"ratioType\":7},{\"width\":2016,\"height\":864,\"ratioType\":8}],\"imageRangeConfig\":{\"minLength\":512,\"maxLength\":2016,\"maxPixelNum\":1763584},\"resolutionName\":\"标清 1K\"},\"2k\":{\"imageRatioSizes\":[{\"width\":2048,\"height\":2048,\"ratioType\":1},{\"width\":1728,\"height\":2304,\"ratioType\":2},{\"width\":2560,\"height\":1440,\"ratioType\":3},{\"width\":2304,\"height\":1728,\"ratioType\":4},{\"width\":1440,\"height\":2560,\"ratioType\":5},{\"width\":1664,\"height\":2496,\"ratioType\":6},{\"width\":2496,\"height\":1664,\"ratioType\":7},{\"width\":3024,\"height\":1296,\"ratioType\":8}],\"imageRangeConfig\":{\"minLength\":1296,\"maxLength\":3024,\"maxPixelNum\":4194304},\"resolutionName\":\"高清 2K\"}}}"
+        },
+        {
+          "name": "dreamina__generator_video_fps",
+          "value": "24"
+        },
+        {
+          "name": "_uetsid",
+          "value": "207c862081ab11f08fe69d26c0636d1d"
+        },
+        {
+          "name": "mweb__receive_credits_cache_time",
+          "value": "1756123252469"
+        },
+        {
+          "name": "__tea_cache_first_513695",
+          "value": "1"
+        },
+        {
+          "name": "SLARDARcn_mweb",
+          "value": "JTdCJTIydXNlcklkJTIyOiUyMjI1YWEwMGNiLWYwNzUtNDE3Yi1hOTQxLWQ5MjQ4ZjVjNGUxOCUyMiwlMjJkZXZpY2VJZCUyMjolMjJlOGIzYTBjOC02NTJlLTQ4ZTItYjU2Ni0yZjMwY2NkMzUwMzQlMjIsJTIyZXhwaXJlcyUyMjoxNzYzODk5MjUxNjQ4JTdE"
+        },
+        {
+          "name": "__cdn_sign_uid",
+          "value": "{\"uid\":\"1462773971682359\",\"timestamp\":1756123251675}"
+        },
+        {
+          "name": "_uetsid_exp",
+          "value": "Tue, 26 Aug 2025 12:00:51 GMT"
+        },
+        {
+          "name": "LV_LOGIN_STATUS",
+          "value": "?success=true"
+        },
+        {
+          "name": "_uetvid",
+          "value": "207c96f081ab11f0b0ef0bd6115c2ce3"
+        },
+        {
+          "name": "dreamina__login-privacy-checked-storage-key",
+          "value": "1"
+        },
+        {
+          "name": "web_runtime_security_uid",
+          "value": "bd0f91e9-a2be-453c-b08f-ce6dac28ed07"
+        },
+        {
+          "name": "__tea_sdk_ab_version_513695",
+          "value": "{\"data\":{\"byte_edit_as_default\":{\"val\":true,\"vid\":\"90172834\"},\"byte_edit_enable\":{\"val\":true,\"vid\":\"90172833\"},\"draft_gen\":{\"val\":true,\"vid\":\"90176952\"},\"dreamina_agent_3.0\":{\"val\":{\"defaultAgentMode\":false,\"enableAgentMode\":false},\"vid\":\"13008743\"},\"dreamina_commerce_component\":{\"val\":{\"enable\":true},\"vid\":\"91249282\"},\"dreamina_feed_filter_byte_edit\":{\"val\":{\"filter_blend_abilities_update\":{\"high_aes_general_v20:general_v2.0\":{\"delete\":[\"byte_edit\"]},\"high_aes_general_v20_L:general_v2.0_L\":{\"delete\":[\"byte_edit\"]}}},\"vid\":\"90172835\"},\"dreamina_web_search\":{\"val\":true,\"vid\":\"12007707\"},\"enable_byte_edit_cutout\":{\"val\":true,\"vid\":\"13753331\"},\"enable_im\":{\"val\":true,\"vid\":\"9474617\"},\"enable_task_indicator\":{\"val\":true,\"vid\":\"91245630\"},\"image_custom_size\":{\"val\":true,\"vid\":\"90121821\"},\"lip_sync_hd_fast_enable\":{\"val\":true,\"vid\":\"91023183\"},\"portrait_survey_v3_display\":{\"val\":true,\"vid\":\"90215423\"},\"sync_asset_to_capcut\":{\"val\":true,\"vid\":\"12932007\"},\"video_draft_gen\":{\"val\":true,\"vid\":\"91033129\"},\"web_runtime_prefetch_enable\":{\"val\":true,\"vid\":\"90175970\"},\"web_runtime_prefetch_extra_feed_enable\":{\"val\":false,\"vid\":\"90175971\"}},\"uuid\":\"1462773971682359\",\"timestamp\":1756123252354,\"ab_version_multilink\":[],\"ab_ext_version\":[],\"ab_version\":[\"13753331\",\"91245630\",\"13008743\",\"91249282\"]}"
+        },
+        {
+          "name": "SLARDARpassport_account_api",
+          "value": "JTdCJTIydXNlcklkJTIyOiUyMmE1Yzk5NmUwLWJkNGEtNGMyZi1hZDI2LWFhOTkwZmM4OWViMSUyMiwlMjJkZXZpY2VJZCUyMjolMjI4ZWJiNzJlZi04ZTQ2LTQ5MTktODhlZC1iZjcyZjlkNGM4MTclMjIsJTIyZXhwaXJlcyUyMjoxNzYzODk5MjUxNzM1JTdE"
+        },
+        {
+          "name": "__lvweb_user_status",
+          "value": "{\"uid\":\"1462773971682359\",\"timestamp\":1756123252161}"
+        },
+        {
+          "name": "PERSISTENT_CACHE",
+          "value": "{\"FIFO\":[\"commerce_landing_dialog_time_1462773971682359\"],\"data\":{\"commerce_landing_dialog_time_1462773971682359\":\"1756123252581\"}}"
+        },
+        {
+          "name": "__tea_cache_tokens_513695",
+          "value": "{\"web_id\":\"7542491837756851753\",\"user_unique_id\":\"1462773971682359\",\"timestamp\":1756123252160,\"_type_\":\"default\"}"
+        }
+      ]
+    },
+    {
+      "origin": "https://fish.audio",
+      "localStorage": [
+        {
+          "name": "_grecaptcha",
+          "value": "09ANMylND2ZiOgfZ2Qb2IiGbKMx7QF4lV157rFqQOfo8EqszCyHR3j3XbwACAXPGZgwsUoBKZENwK1gc4L2vkYeRXitSkp-1gxZyKdhA0BWeCq45l4zW0poPNs3mgKLuPQ"
+        },
+        {
+          "name": "token",
+          "value": "6c042a9f-bb31-40a6-ba54-363edfd50d0e"
+        },
+        {
+          "name": "ph_phc_eRWrqtSo2ME6572rpKWQ5USQtkxlR4ptTECaXuhmYI_posthog",
+          "value": "{\"$configured_session_timeout_ms\":1800000,\"$sesid\":[1756038780761,\"0198dc10-fe46-7786-adfa-ed1eb48f442c\",1756038757958],\"$client_session_props\":{\"sessionId\":\"0198dc10-fe46-7786-adfa-ed1eb48f442c\",\"props\":{\"initialPathName\":\"/app/\",\"referringDomain\":\"$direct\",\"utm_source\":null,\"utm_medium\":null,\"utm_campaign\":null,\"utm_content\":null,\"utm_term\":null,\"gclid\":null,\"gad_source\":null,\"gclsrc\":null,\"dclid\":null,\"gbraid\":null,\"wbraid\":null,\"fbclid\":null,\"msclkid\":null,\"twclid\":null,\"li_fat_id\":null,\"mc_cid\":null,\"igshid\":null,\"ttclid\":null,\"rdt_cid\":null}},\"distinct_id\":\"ee23503f8a7b4f088ba18784ea8b0dd4\",\"$device_id\":\"0198dc10-fe47-7a18-8f36-b44a58698352\",\"$user_state\":\"identified\",\"$session_recording_enabled_server_side\":true,\"$console_log_recording_enabled_server_side\":true,\"$session_recording_network_payload_capture\":{\"capturePerformance\":{\"network_timing\":true,\"web_vitals\":true,\"web_vitals_allowed_metrics\":null}},\"$session_recording_canvas_recording\":{},\"$replay_sample_rate\":0.1,\"$replay_minimum_duration\":null,\"$replay_script_config\":null,\"$session_is_sampled\":false,\"$autocapture_disabled_server_side\":true,\"$heatmaps_enabled_server_side\":true,\"$web_vitals_enabled_server_side\":true,\"$web_vitals_allowed_metrics\":null,\"$exception_capture_enabled_server_side\":false,\"$dead_clicks_enabled_server_side\":false,\"$active_feature_flags\":[\"navbar_ab_test_july25\",\"survey-targeting-515621b08c\",\"s1-beta\",\"survey-targeting-ef41d95770-custom\"],\"$enabled_feature_flags\":{\"navbar_ab_test_july25\":\"navbar_h0\",\"survey-targeting-515621b08c\":true,\"s1-beta\":true,\"survey-targeting-ef41d95770-custom\":true},\"$feature_flag_payloads\":{},\"$epp\":true,\"$user_id\":\"ee23503f8a7b4f088ba18784ea8b0dd4\",\"$stored_person_properties\":{}}"
+        }
+      ]
+    },
+    {
+      "origin": "https://www.recaptcha.net",
+      "localStorage": [
+        {
+          "name": "rc::a",
+          "value": "dXN2dTVxMWV1aWZoMQ=="
+        },
+        {
+          "name": "rc::f",
+          "value": "0aAJ3Gg0Z1n3KjSoYCg5SsjK0H_P9z9v5SiIVNHF9-rXwfZVQtB4RERvtqzPyZ2Apxav6k2jI"
+        }
+      ]
+    },
+    {
+      "origin": "https://helpdesk.bytedance.com",
+      "localStorage": [
+        {
+          "name": "byted_helpcenter_tk",
+          "value": "{\"175612325262899\":\"MTpgKeDUcgmUKe8fSZl0lFWzhHskh gacg4FXaGIZwSqPGrnezJcZ4vz95F6hVdhVRFBpB7BUwkNaeQIPO7T2p5jBEIe56W6GtKJOFjQuPdpC6tdTE0em22cWGKliIFhsAlajzf24/EGn0S8h5IfLYCfGypYnNC20QEe9FTCdppAdjEvWjzGRnlOJUcjLTkKtVW5VmnKVQFexwn Cs9I8HPmKhpQBYxdRUbF57mGt7eJLduTe 5jfIkE2iwrbM0xrYuuKolx9B9UdDqeYNJxA 3AjjXi0qGVkzb2LszHcYteHMlI0CDDyE1RYp8enUjpPM1YSmDc3Af/ukVHTz8Fwh2e5yJU7oJLdzmsUZYXKX0RvUWmbP1u9ecDDAVyDCUpzXy/8XtCafrKX4EZhN4jvfp4vdMtC0/a DJxetwB51YT Ppos0ITCb7B14LeIPXqHT5qI5 w0yf55 jyv5UpGdwpi4RaM 46UbxfRiMhYRfqYpKpC8TXB/0mgsnZaHdl2RVUK98d9aI0rcPGVtBnbH2CFP6KyCcE9 GGxz8HnMCN4fhydoDqYC0YBIQ=\"}"
+        },
+        {
+          "name": "SLARDARies_helpdesk_pc",
+          "value": "{\"userId\":\"unknown\",\"deviceId\":\"e7d5e93c-3502-4103-a0e5-f18f6c819f3a\"}"
+        },
+        {
+          "name": "__tea_sdk_ab_version_2970",
+          "value": "{\"data\":{\"helpcenter\":{\"val\":{\"useHelpcenter\":true},\"vid\":\"90081862\"},\"im_emoticons\":{\"val\":{\"im_use_emoticons\":true},\"vid\":\"90093519\"},\"im_input_suggest\":{\"val\":{\"use_input_suggest_v2\":{\"val\":true,\"vid\":\"\"}},\"vid\":\"90097040\"},\"im_input_suggest_111\":{\"val\":{\"use_input_suggest_v2\":{\"val\":true,\"vid\":\"6236013\"}},\"vid\":\"90096811\"},\"im_input_suggest_41\":{\"val\":{\"use_input_suggest_v2\":{\"val\":true,\"vid\":\"\"}},\"vid\":\"90097007\"},\"im_input_suggest_44\":{\"val\":{\"use_input_suggest_v2\":{\"val\":true,\"vid\":\"6236659\"}},\"vid\":\"90096809\"},\"im_input_suggest_57\":{\"val\":{\"use_input_suggest_v2\":{\"val\":true,\"vid\":\"6236406\"}},\"vid\":\"90096810\"},\"im_input_suggest_76\":{\"val\":{\"use_input_suggest_v2\":{\"val\":true,\"vid\":\"6236713\"}},\"vid\":\"90096808\"},\"manual_connet_tip\":{\"val\":true,\"vid\":\"90170245\"},\"show_unread_message_card\":{\"val\":{\"show_unread_message_card\":\"true\"},\"vid\":\"90125067\"}},\"uuid\":\"7542491837756851753\",\"timestamp\":1756123252753,\"ab_version_multilink\":[],\"ab_ext_version\":[],\"ab_version\":[]}"
+        },
+        {
+          "name": "__tea_cache_first_2970",
+          "value": "1"
+        },
+        {
+          "name": "__tea_cache_tokens_2970",
+          "value": "{\"web_id\":\"7542491835068679722\",\"user_unique_id\":\"7542491837756851753\",\"timestamp\":1756123252691,\"_type_\":\"default\"}"
+        }
+      ]
+    },
+    {
+      "origin": "https://open.douyin.com",
+      "localStorage": [
+        {
+          "name": "xmst",
+          "value": "Jw7Shkzs6dvpeqaqWiSNfGf7XH3w4aLZ5FqiHzA3llKlvnOfLnfVpDBMyzgjzaVzQnm_6Gyww3dnrO6O_5UXRWyPvo8KHN-BeJInAUBbgHdH8FX41achPz1oQ6dGRyCh56iHIw=="
+        },
+        {
+          "name": "__tea_sdk_ab_version_1243",
+          "value": "{\"data\":{\"auth_method\":{\"val\":{\"timeout\":3000,\"type\":\"one_click\"},\"vid\":\"90082117\"},\"auth_type\":{\"val\":{\"type\":\"SMS_MOBILE_TELE\"},\"vid\":\"90093577\"},\"hide_protocol_checkbox\":{\"val\":true,\"vid\":\"90093575\"},\"is_auto_auth\":{\"val\":true,\"vid\":\"90096371\"},\"redirect_oversea\":{\"val\":\"0\",\"vid\":\"91097684\"},\"reflow_page_auto_open_optimize\":{\"val\":\"0\",\"vid\":\"11613740\"},\"share_page_dark_mode_adaptation\":{\"val\":\"1\",\"vid\":\"90121378\"},\"to_featured_app\":{\"val\":\"1\",\"vid\":\"91055675\"},\"video\":{\"val\":{\"play_bar\":1},\"vid\":\"90082450\"}},\"uuid\":\"7542491853761824299\",\"timestamp\":1756123248083,\"ab_version_multilink\":[],\"ab_ext_version\":[],\"ab_version\":[]}"
+        },
+        {
+          "name": "SLARDARdouyin_open_auth",
+          "value": "JTdCJTIydXNlcklkJTIyOiUyMmVkODRhNTRlLWM0ZmEtNDFiYi1hMGZiLTFhNjU2MTc4NThlZSUyMiwlMjJkZXZpY2VJZCUyMjolMjI3MGQ2NDliMy02MTExLTQ4ZWQtYjNmNS0wODg3ZWFhM2Q4OWYlMjIsJTIyZXhwaXJlcyUyMjoxNzYzODk5MjQ3NTk5JTdE"
+        },
+        {
+          "name": "__tea_cache_first_1243",
+          "value": "1"
+        },
+        {
+          "name": "SLARDARuc_secure_sdk",
+          "value": "JTdCJTIydXNlcklkJTIyOiUyMjAzMzgwNjMzLTM0NTgtNGFiZC04OGEzLWMyNGEwOGYzNjg3MyUyMiwlMjJkZXZpY2VJZCUyMjolMjJiNDM3ZDNlMy1iMDE0LTRkYzgtYjI5MS0xZGQyODg0YTlhNWUlMjIsJTIyZXhwaXJlcyUyMjoxNzYzODk5MjQ3OTg0JTdE"
+        },
+        {
+          "name": "security-sdk/s_sdk_crypt_sdk",
+          "value": "{\"data\":\"{\\\"ec_privateKey\\\":\\\"-----BEGIN PRIVATE KEY-----\\\\r\\\\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgYnpK9j9yvK/AyWKQ\\\\r\\\\nGuvophS6UxN/vKpjVRsPIObv2yWhRANCAARSnFNaJfumhWmfB1zu+eGKeeoXrbtu\\\\r\\\\n52vgRXFIMGW621MsTYcIA+wYe9HQyavkdW4lIPSFDTZ42sfRhF3hkHqd\\\\r\\\\n-----END PRIVATE KEY-----\\\\r\\\\n\\\",\\\"ec_publicKey\\\":\\\"-----BEGIN PUBLIC KEY-----\\\\r\\\\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEUpxTWiX7poVpnwdc7vnhinnqF627\\\\r\\\\nbudr4EVxSDBluttTLE2HCAPsGHvR0Mmr5HVuJSD0hQ02eNrH0YRd4ZB6nQ==\\\\r\\\\n-----END PUBLIC KEY-----\\\\r\\\\n\\\",\\\"ec_csr\\\":\\\"-----BEGIN CERTIFICATE REQUEST-----\\\\r\\\\nMIIBDjCBtgIBADAnMQswCQYDVQQGEwJDTjEYMBYGA1UEAwwPYmRfdGlja2V0X2d1\\\\r\\\\nYXJkMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEUpxTWiX7poVpnwdc7vnhinnq\\\\r\\\\nF627budr4EVxSDBluttTLE2HCAPsGHvR0Mmr5HVuJSD0hQ02eNrH0YRd4ZB6naAt\\\\r\\\\nMCsGCSqGSIb3DQEJDjEeMBwwGgYDVR0RBBMwEYIPb3Blbi5kb3V5aW4uY29tMAoG\\\\r\\\\nCCqGSM49BAMCA0cAMEQCIFmF5gNJpD46LmhhA4B10CvpHFEfCF17xdkP41QuDOaG\\\\r\\\\nAiAwrbcRVfkppgiDkx3FzzOwJlEMCviZFhA2LgI6S1opeA==\\\\r\\\\n-----END CERTIFICATE REQUEST-----\\\\r\\\\n\\\"}\"}"
+        }
+      ]
+    },
+    {
+      "origin": "https://lf-zt.douyin.com",
+      "localStorage": [
+        {
+          "name": "security-sdk/s_sdk_crypt_sdk",
+          "value": "{\"data\":\"{\\\"ec_privateKey\\\":\\\"-----BEGIN PRIVATE KEY-----\\\\r\\\\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgYnpK9j9yvK/AyWKQ\\\\r\\\\nGuvophS6UxN/vKpjVRsPIObv2yWhRANCAARSnFNaJfumhWmfB1zu+eGKeeoXrbtu\\\\r\\\\n52vgRXFIMGW621MsTYcIA+wYe9HQyavkdW4lIPSFDTZ42sfRhF3hkHqd\\\\r\\\\n-----END PRIVATE KEY-----\\\\r\\\\n\\\",\\\"ec_publicKey\\\":\\\"-----BEGIN PUBLIC KEY-----\\\\r\\\\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEUpxTWiX7poVpnwdc7vnhinnqF627\\\\r\\\\nbudr4EVxSDBluttTLE2HCAPsGHvR0Mmr5HVuJSD0hQ02eNrH0YRd4ZB6nQ==\\\\r\\\\n-----END PUBLIC KEY-----\\\\r\\\\n\\\",\\\"ec_csr\\\":\\\"-----BEGIN CERTIFICATE REQUEST-----\\\\r\\\\nMIIBDjCBtgIBADAnMQswCQYDVQQGEwJDTjEYMBYGA1UEAwwPYmRfdGlja2V0X2d1\\\\r\\\\nYXJkMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEUpxTWiX7poVpnwdc7vnhinnq\\\\r\\\\nF627budr4EVxSDBluttTLE2HCAPsGHvR0Mmr5HVuJSD0hQ02eNrH0YRd4ZB6naAt\\\\r\\\\nMCsGCSqGSIb3DQEJDjEeMBwwGgYDVR0RBBMwEYIPb3Blbi5kb3V5aW4uY29tMAoG\\\\r\\\\nCCqGSM49BAMCA0cAMEQCIFmF5gNJpD46LmhhA4B10CvpHFEfCF17xdkP41QuDOaG\\\\r\\\\nAiAwrbcRVfkppgiDkx3FzzOwJlEMCviZFhA2LgI6S1opeA==\\\\r\\\\n-----END CERTIFICATE REQUEST-----\\\\r\\\\n\\\"}\"}"
+        }
+      ]
+    }
+  ]
+}
