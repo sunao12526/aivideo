@@ -10,15 +10,10 @@ export async function POST(req: NextRequest) {
     if (!videoName) {
       return NextResponse.json({ error: 'videoName is required' }, { status: 400 });
     }
-    const baseDir = process.cwd();
-    const imagePromptsPath = path.join(baseDir, 'public', 'data', 'videos', videoName, 'imagePrompts.json');
-    if (!fs.existsSync(imagePromptsPath)) {
-      return NextResponse.json({ error: `imagePrompts.json not found for ${videoName}` }, { status: 404 });
-    }
-    const imagePrompts = JSON.parse(fs.readFileSync(imagePromptsPath, 'utf8'));
-     const result = await runPlaywrightTest("tests/jimeng-create.spec.ts", { videoName });
-    console.log(result);
 
+    const result = await runPlaywrightTest("tests/jimeng-create.spec.ts", { videoName });
+    console.log(result);
+    
     return NextResponse.json({ message: `Images generated and saved for ${videoName}` });
   } catch (error) {
     console.error('Error generating images:', error);

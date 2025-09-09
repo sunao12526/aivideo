@@ -1,6 +1,7 @@
 import ffmpeg from 'fluent-ffmpeg';
 import path from 'path';
 import * as fs from 'fs';
+import { exec } from 'child_process';
 
 /**
  * Helper function to get the duration of an audio file using ffprobe.
@@ -21,6 +22,35 @@ const getAudioDuration = (audioPath: string): Promise<number> => {
     });
   });
 };
+
+export async function createAudio(videoName: string) {
+  const baseDir = process.cwd();
+  const contentPath = path.join(baseDir, 'public', 'data', 'videos', videoName, 'content.txt');
+  const audioOutputPath = path.join(baseDir, 'public', 'data', 'videos', videoName, 'audio.mp3');
+
+  if (!fs.existsSync(contentPath)) {
+    throw new Error(`Content file not found for video: ${videoName}`);
+  }
+
+  const content = fs.readFileSync(contentPath, 'utf8');
+
+  // Using edge-tts to convert text to speech
+  // You might need to install it: pip install edge-tts
+  // And ensure it's in your PATH or provide the full path to the executable
+  const command = `edge-tts --text "${content}" --write-media "${audioOutputPath}" --voice zh-CN-XiaoyiNeural`;
+
+  return new Promise<void>((resolve, reject) => {
+    exec(command, (error: any, stdout: any, stderr: any) => {
+      if (error) {
+        console.error(`exec error: ${error}`);
+        console.error(`stderr: ${stderr}`);
+        return reject(new Error(`Failed to generate audio: ${error.message}`));
+      }
+      console.log(`Audio generated: ${stdout}`);
+      resolve();
+    });
+  });
+}
 
 
 
