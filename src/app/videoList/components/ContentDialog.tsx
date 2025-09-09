@@ -38,6 +38,10 @@ export function ContentDialog({ videoName, showContentDialog, setShowContentDial
       };
       fetchContent();
     }
+    if(!showContentDialog){
+      setCurrentContent('')
+    }
+
   }, [videoName, showContentDialog]);
 
   const handleSaveContent = async () => {

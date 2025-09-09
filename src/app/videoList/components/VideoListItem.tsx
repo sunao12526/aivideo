@@ -1,10 +1,11 @@
 'use client';
 
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { Video } from '@/lib/videoUtils';
 import { EditVideoDialog } from './EditVideoDialog';
+import { toast } from 'sonner';
+import { DeleteVideoDialog } from './DeleteVideoDialog';
+import { Sparkles, Eye, ImagePlus, Image, FileImage, Music, Video as VideoIcon } from 'lucide-react';
 
 interface VideoListItemProps {
   video: Video;
@@ -16,72 +17,153 @@ interface VideoListItemProps {
   handleGenerateAudio: (videoName: string) => void;
   handleGenerateVideo: (videoName: string) => void;
   handleDeleteVideo: (videoId: string) => void;
-  fetchVideoData: () => void;
+  fetchVideoData: () => Promise<void>;
 }
 
-export function VideoListItem({ 
-  video, 
-  handleAIParse, 
-  handleViewContent, 
-  handleViewImagePrompt, 
-  handleGenerateImage, 
-  handleViewImage, 
-  handleGenerateAudio, 
-  handleGenerateVideo, 
+export function VideoListItem({
+  video,
+  handleAIParse,
+  handleViewContent,
+  handleViewImagePrompt,
+  handleGenerateImage,
+  handleViewImage,
+  handleGenerateAudio,
+  handleGenerateVideo,
   handleDeleteVideo,
   fetchVideoData
 }: VideoListItemProps) {
+
+  const handleViewAudio = (videoName: string) => {
+    const audioUrl = `/data/videos/${videoName}/audio/speech.mp3`;
+    fetch(audioUrl, { method: 'HEAD' })
+      .then(response => {
+        if (response.ok) {
+          window.open(audioUrl, '_blank');
+        } else {
+          toast.error('音频文件不存在或无法访问。');
+        }
+      })
+      .catch(error => {
+        console.error('检查音频文件时发生错误:', error);
+        toast.error('检查音频文件时发生错误。');
+      });
+  };
+
+  const handleViewVideo = (videoName: string) => {
+    const videoUrl = `/data/videos/${videoName}/video/video.mp4`;
+    fetch(videoUrl, { method: 'HEAD' })
+      .then(response => {
+        if (response.ok) {
+          window.open(videoUrl, '_blank');
+        } else {
+          toast.error('视频文件不存在或无法访问。');
+        }
+      })
+      .catch(error => {
+        console.error('检查视频文件时发生错误:', error);
+        toast.error('检查视频文件时发生错误。');
+      });
+  };
+
+  const copyToClipboard = async (text: string) => {
+    if (navigator.clipboard && window.isSecureContext) {
+      try {
+        await navigator.clipboard.writeText(text);
+        toast.success('视频名称已复制到剪贴板！')
+      } catch (err) {
+        console.error('无法复制文本: ', err);
+        fallbackCopyToClipboard(text);
+      }
+    } else {
+      fallbackCopyToClipboard(text);
+    }
+  };
+
+  const fallbackCopyToClipboard = (text: string) => {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed'; // Avoid scrolling to bottom of page in MS Edge.
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      document.execCommand('copy');
+      toast.success('视频名称已复制到剪贴板！')
+    } catch (err) {
+      console.error('Fallback: 无法复制文本: ', err);
+      toast.error('复制失败，请手动复制。');
+    }
+    document.body.removeChild(textArea);
+  };
+
   return (
     <li key={video.id} className="bg-gray-100 p-3 rounded-md shadow-sm">
-      <Link href={video.name} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-        {video.name}
-      </Link>
+      <div className="flex items-center justify-between">
+        <span
+          onClick={() => copyToClipboard(video.name)}
+          className="text-blue-600 hover:underline cursor-pointer"
+          tabIndex={0}
+          role="Button"
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              copyToClipboard(video.name);
+            }
+          }}
+        >
+          {video.name}
+        </span>
+        <div className="flex items-center space-x-2">
+          <EditVideoDialog video={video} fetchVideoData={fetchVideoData} />
+          <DeleteVideoDialog video={video} handleDeleteVideo={handleDeleteVideo} />
+        </div>
+      </div>
       <p className="text-sm text-gray-500">创建时间: {video.createdAt}</p>
-      <div className="mt-2 space-x-2">
-        <button className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600" onClick={() => handleAIParse(video.name)}>
+      <div className="flex items-center mt-2 space-x-2">
+        <Button onClick={() => handleAIParse(video.name)}>
+          <Sparkles className="w-4 h-4 mr-2" />
           AI解析
-        </button>
-        <button className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600" onClick={() => handleViewContent(video.name)}>
+        </Button>
+        <div>-----</div>
+        <Button className="bg-blue-500 hover:bg-blue-600" onClick={() => handleViewContent(video.name)}>
+          <Eye className="w-4 h-4 mr-2" />
           查看内容
-        </button>
-        <button className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600" onClick={() => handleViewImagePrompt(video.name)}>
+        </Button>
+        <Button className="bg-blue-500 hover:bg-blue-600" onClick={() => handleViewImagePrompt(video.name)}>
+          <ImagePlus className="w-4 h-4 mr-2" />
           查看图片提示词
-        </button>
-        <button className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600" onClick={() => handleGenerateImage(video.name)}>
+        </Button>
+        <div>-----</div>
+        <Button className="bg-blue-500 hover:bg-blue-600" onClick={() => handleGenerateImage(video.name)}>
+          <Image className="w-4 h-4 mr-2" />
           生成图片
-        </button>
-        <button className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600" onClick={() => handleViewImage(video.name)}>
+        </Button>
+        <Button className="bg-blue-500 hover:bg-blue-600" onClick={() => handleViewImage(video.name)}>
+          <FileImage className="w-4 h-4 mr-2" />
           查看图片
-        </button>
-        <button className="ml-2 px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600" onClick={() => handleGenerateAudio(video.name)}>
+        </Button>
+
+      </div>
+      <div className="flex items-center mt-2 space-x-2">
+        <Button className="bg-green-500 hover:bg-green-600" onClick={() => handleGenerateAudio(video.name)}>
+          <Music className="w-4 h-4 mr-2" />
           生成音频
-        </button>
-        
-        <button
-          className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
+        </Button>
+        <Button className="bg-green-500 hover:bg-green-600" onClick={() => handleViewAudio(video.name)}>
+          <Music className="w-4 h-4 mr-2" />
+          查看音频
+        </Button>
+        <div>-----</div>
+        <Button
+          className="bg-yellow-500 hover:bg-yellow-600"
           onClick={() => handleGenerateVideo(video.name)}
         >
+          <VideoIcon className="w-4 h-4 mr-2" />
           生成视频
-        </button>
-        <EditVideoDialog video={video} fetchVideoData={fetchVideoData} />
-
-        <AlertDialog>
-          <AlertDialogTrigger asChild>
-            <Button variant="destructive" size="sm">删除</Button>
-          </AlertDialogTrigger>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>确定要删除吗？</AlertDialogTitle>
-              <AlertDialogDescription>
-                此操作无法撤销。这将永久删除视频。
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel>取消</AlertDialogCancel>
-              <AlertDialogAction onClick={() => handleDeleteVideo(video.id)}>删除</AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
+        </Button>
+        <Button className="bg-yellow-500 hover:bg-yellow-600" onClick={() => handleViewVideo(video.name)}>
+          <VideoIcon className="w-4 h-4 mr-2" />
+          查看视频
+        </Button>
       </div>
     </li>
   );

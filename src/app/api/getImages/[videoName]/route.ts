@@ -17,11 +17,24 @@ export async function GET(req: NextRequest, { params }: { params: { videoName: s
       return NextResponse.json({ images: [] });
     }
 
-    const files = fs.readdirSync(imagesDir);
-    const imageFiles = files.filter(file => file.endsWith('.png') || file.endsWith('.jpg') || file.endsWith('.jpeg'));
-
+    // const files = fs.readdirSync(imagesDir);
+    // const imageFiles = files.filter(file => file.endsWith('.png') || file.endsWith('.jpg') || file.endsWith('.jpeg'));
+    const imageFiles = fs.readdirSync(imagesDir)
+      .filter(file => file.endsWith('.png'))
+      .sort((a, b) => {
+        const getOrder = (filename: string) => {
+          const match = filename.match(/(\d+)-(\d+)\.png$/);
+          if (match) {
+            return parseInt(match[1]) * 100 + parseInt(match[2]);
+          }
+          return Infinity;
+        };
+        return getOrder(a) - getOrder(b);
+      });
     const imageUrls = imageFiles.map(file => `/data/videos/${videoName}/images/${file}`);
 
+
+    
     return NextResponse.json({ images: imageUrls });
   } catch (error) {
     console.error('Error getting images:', error);

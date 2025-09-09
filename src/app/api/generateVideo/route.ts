@@ -17,16 +17,9 @@ export async function POST(request: Request) {
     // For demonstration, let's just log the URL and return a success message.
     console.log(`Received request to generate video for URL: ${videoName}`);
 
-    // Example: You might want to process the video here
-    // ffmpeg(videoUrl).output('output.mp4').run();
-
-
     // 单个视频创建示例
-    // const inputImage = path.join('public', 'data', 'input', 'image1.png');
-    // const inputImage1 = path.join('public', 'data', 'input', 'image2.png');
-    // const inputImage2 = path.join('public', 'data', 'input', 'image3.png');
     const inputAudio = path.join('public', 'data', 'videos', videoName, 'audio', 'speech.mp3');
-    const outputVideo = path.join('public', 'data', 'videos', videoName, 'video.mp4');
+    const outputVideo = path.join('public', 'data', 'videos', videoName,'video', 'video.mp4');
     const imageDir = path.join('public', 'data', 'videos', videoName, 'images');
     const imageFiles = fs.readdirSync(imageDir)
       .filter(file => file.endsWith('.png'))

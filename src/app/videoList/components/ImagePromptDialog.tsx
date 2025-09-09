@@ -38,6 +38,9 @@ export function ImagePromptDialog({ videoName, showImagePromptDialog, setShowIma
       };
       fetchImagePrompts();
     }
+    if(!showImagePromptDialog){
+      setCurrentImagePrompts([])
+    }
   }, [videoName, showImagePromptDialog]);
 
   const handleSavePrompts = async () => {

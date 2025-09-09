@@ -8,6 +8,7 @@ import {
 } from '@/components/ui/dialog';
 import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
+import { Trash2 } from 'lucide-react';
 
 interface ViewImageDialogProps {
   videoName: string;
@@ -17,6 +18,28 @@ interface ViewImageDialogProps {
 
 export function ViewImageDialog({ videoName, showImageDialog, setShowImageDialog }: ViewImageDialogProps) {
   const [currentImages, setCurrentImages] = useState<string[]>([]);
+
+  const handleDeleteImage = async (imageUrl: string) => {
+    try {
+      const response = await fetch(`/api/deleteImage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ videoName, imageUrl }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to delete image: ${response.statusText}`);
+      }
+
+      setCurrentImages(prevImages => prevImages.filter(img => img !== imageUrl));
+      toast.success('图片删除成功！');
+    } catch (error: any) {
+      console.error("Error deleting image:", error);
+      toast.error(`删除图片失败: ${error.message}`);
+    }
+  };
 
   useEffect(() => {
     if (videoName && showImageDialog) {
@@ -39,6 +62,9 @@ export function ViewImageDialog({ videoName, showImageDialog, setShowImageDialog
       };
       fetchImages();
     }
+    if(!showImageDialog){
+      setCurrentImages([]);
+    }
   }, [videoName, showImageDialog]);
 
   return (
@@ -49,7 +75,15 @@ export function ViewImageDialog({ videoName, showImageDialog, setShowImageDialog
         </DialogHeader>
         <div className="flex overflow-x-auto space-x-4 pb-4">
           {currentImages.map((imageUrl, index) => (
-            <img key={index} src={imageUrl} alt={`Image ${index}`} className="flex-shrink-0 w-90 h-160 object-cover rounded-md" />
+            <div key={index} className="relative flex-shrink-0">
+              <img src={imageUrl} alt={`Image ${index}`} className="w-90 h-160 object-cover rounded-md" />
+              <button
+                onClick={() => handleDeleteImage(imageUrl)}
+                className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+              >
+                <Trash2 className="w-4 h-4" />
+              </button>
+            </div>
           ))}
         </div>
       </DialogContent>
