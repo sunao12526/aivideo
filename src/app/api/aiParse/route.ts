@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
     fs.writeFileSync(outputPath, text);
     console.log(`Gemini's response saved to ${outputPath}`);
 
-    await parseVideoScript(videoName);
+    // await parseVideoScript(videoName);
     return NextResponse.json({ analysis: 'text' });
   } catch (error) {
     console.error('Error in AI parsing:', error);

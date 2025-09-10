@@ -19,7 +19,13 @@ export async function POST(request: Request) {
 
     // 单个视频创建示例
     const inputAudio = path.join('public', 'data', 'videos', videoName, 'audio', 'speech.mp3');
-    const outputVideo = path.join('public', 'data', 'videos', videoName,'video', 'video.mp4');
+
+    const outputVideoPath = path.join('public', 'data', 'videos', videoName,'video');
+    if (!fs.existsSync(outputVideoPath)) {
+      fs.mkdirSync(outputVideoPath, { recursive: true });
+    }
+    const outputVideo = path.join(outputVideoPath, 'video.mp4');
+     
     const imageDir = path.join('public', 'data', 'videos', videoName, 'images');
     const imageFiles = fs.readdirSync(imageDir)
       .filter(file => file.endsWith('.png'))

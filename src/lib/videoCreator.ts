@@ -95,10 +95,31 @@ interface VideoCreationResult {
  * Interface for the options for creating a video from images and audio.
  */
 interface VideoFromImagesAndAudioOptions {
-    inputImages: string[];
-    inputAudio: string;
-    outputVideo: string;
-    resolution?: string;
+  inputImages: string[];
+  inputAudio: string;
+  outputVideo: string;
+  resolution?: string;
+}
+
+/**
+ * Interface for the options for adding text to an image.
+ */
+interface AddTextToImageOptions {
+  imagePath: string;
+  text: string;
+  outputPath: string;
+  x?: string;
+  y?: string;
+  boxColor?: string;
+}
+
+/**
+ * Interface for the result of adding text to an image.
+ */
+interface TextToImageResult {
+  success: boolean;
+  outputPath: string;
+  error?: string;
 }
 
 /**
@@ -151,11 +172,11 @@ export class VideoCreator {
           console.warn(`Input image file not found, skipping: ${fullImagePath}`);
           continue;
         }
-        
+
         const timePassed = imageCount * imageDisplayDuration;
 
         if (timePassed >= audioDuration) {
-            break; // No more time left for more images
+          break; // No more time left for more images
         }
 
         let duration;
@@ -166,22 +187,22 @@ export class VideoCreator {
         }
 
         if (duration > 0) {
-            command.input(fullImagePath);
-            command.inputOptions([`-loop`, `1`, `-t`, `${duration}`]);
-            // Scale and pad the image to fit the resolution
-            complexFilter.push(`[${imageCount}:v]scale=${resolution}:force_original_aspect_ratio=decrease,pad=${width}:${height}:(ow-iw)/2:(oh-ih)/2:color=black,setsar=1[v${imageCount}]`);
-            videoStreams += `[v${imageCount}]`;
-            imageCount++;
+          command.input(fullImagePath);
+          command.inputOptions([`-loop`, `1`, `-t`, `${duration}`]);
+          // Scale and pad the image to fit the resolution
+          complexFilter.push(`[${imageCount}:v]scale=${resolution}:force_original_aspect_ratio=decrease,pad=${width}:${height}:(ow-iw)/2:(oh-ih)/2:color=black,setsar=1[v${imageCount}]`);
+          videoStreams += `[v${imageCount}]`;
+          imageCount++;
         }
       }
 
       if (imageCount === 0) {
         return {
-            success: false,
-            outputPath: outputVideo,
-            duration: 0,
-            error: 'No valid input images found or audio duration is too short.',
-          };
+          success: false,
+          outputPath: outputVideo,
+          duration: 0,
+          error: 'No valid input images found or audio duration is too short.',
+        };
       }
 
       command.input(fullAudioPath);
@@ -231,4 +252,69 @@ export class VideoCreator {
       };
     }
   }
+
+  /**
+   * Adds text to an image using ffmpeg.
+   * @param options - The options for adding text to the image.
+   * @returns A promise that resolves with the result of the operation.
+   */
+  static async addTextToImage(options: AddTextToImageOptions): Promise<TextToImageResult> {
+    const {
+      imagePath,
+      text,
+      outputPath,
+      x = '(w-text_w)/2',
+      y = '200',
+      boxColor = '#FDDF05',
+    } = options;
+
+    const fullImagePath = path.join(process.cwd(), imagePath);
+    const fullOutputPath = path.join(process.cwd(), outputPath);
+
+    if (!fs.existsSync(fullImagePath)) {
+      return {
+        success: false,
+        outputPath,
+        error: `Input image file not found: ${fullImagePath}`,
+      };
+    }
+
+    return new Promise<TextToImageResult>((resolve) => {
+    
+      let wrappedText;
+      const textToRender = text.substring(0, 27);
+      const len = textToRender.length;
+
+      if (len <= 9) {
+        wrappedText = textToRender;
+      } else if (len <= 18) {
+        wrappedText = `${textToRender.substring(0, 9)}\n${textToRender.substring(9)}`;
+      } else {
+        wrappedText = `${textToRender.substring(0, 9)}\n${textToRender.substring(9, 18)}\n${textToRender.substring(18)}`;
+      }
+
+      let videoFilter = `drawtext=text='${wrappedText}':fontcolor=black:fontsize=80:x=${x}:y=${y}`;
+      if (boxColor) {
+        videoFilter += `:box=1:boxcolor=${boxColor}:boxborderw=20:shadowcolor=${boxColor}`;
+      }
+      ffmpeg(fullImagePath)
+        .videoFilter(videoFilter)
+        .output(fullOutputPath)
+        .on('end', () => {
+          resolve({
+            success: true,
+            outputPath,
+          });
+        })
+        .on('error', (err) => {
+          resolve({
+            success: false,
+            outputPath,
+            error: err.message,
+          });
+        })
+        .run();
+    });
+  }
 }
+

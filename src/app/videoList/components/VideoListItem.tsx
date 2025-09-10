@@ -5,7 +5,7 @@ import { Video } from '@/lib/videoUtils';
 import { EditVideoDialog } from './EditVideoDialog';
 import { toast } from 'sonner';
 import { DeleteVideoDialog } from './DeleteVideoDialog';
-import { Sparkles, Eye, ImagePlus, Image, FileImage, Music, Video as VideoIcon } from 'lucide-react';
+import { Sparkles, Eye, ImagePlus, Image, FileImage, Music, Video as VideoIcon, } from 'lucide-react';
 
 interface VideoListItemProps {
   video: Video;
@@ -63,6 +63,31 @@ export function VideoListItem({
         console.error('检查视频文件时发生错误:', error);
         toast.error('检查视频文件时发生错误。');
       });
+  };
+
+  const handlePublishVideo = async (videoName: string) => {
+    toast.loading('视频发布中...');
+    try {
+      const response = await fetch('/api/publishVideo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ videoName }),
+      });
+
+      if (response.ok) {
+        toast.success('视频发布成功！');
+      } else {
+        const errorData = await response.json();
+        toast.error(`视频发布失败: ${errorData.error}`);
+      }
+    } catch (error) {
+      console.error('发布视频时发生错误:', error);
+      toast.error('发布视频时发生错误。');
+    } finally {
+      toast.dismiss();
+    }
   };
 
   const copyToClipboard = async (text: string) => {
@@ -163,6 +188,13 @@ export function VideoListItem({
         <Button className="bg-yellow-500 hover:bg-yellow-600" onClick={() => handleViewVideo(video.name)}>
           <VideoIcon className="w-4 h-4 mr-2" />
           查看视频
+        </Button>
+        <div>-----</div>
+        <Button
+          onClick={() => handlePublishVideo(video.name)}
+        >
+          <VideoIcon className="w-4 h-4 mr-2" />
+          发布
         </Button>
       </div>
     </li>
